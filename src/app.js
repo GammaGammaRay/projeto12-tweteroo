@@ -10,7 +10,7 @@ const PORT = 5000;
 const users = [];
 const tweets = [];
 
-app.post("/sign-in", (req, res) => {
+app.post("/sign-up", (req, res) => {
     const { username, avatar } = req.body;
 
     if (!username || !avatar || typeof username !== 'string' || typeof avatar !== 'string') {
@@ -18,7 +18,7 @@ app.post("/sign-in", (req, res) => {
     }
 
     users.push({ username, avatar });
-    return res.status(201).send("OK");
+    return res.status(201).send("OK/CREATED");
 });
 
 app.post("/tweets", (req, res) => {
@@ -32,7 +32,7 @@ app.post("/tweets", (req, res) => {
         return res.status(400).send("All fields are required");
     }
     tweets.push({ username, tweet });
-    res.status(201).send("OK");
+    res.status(201).send("OK/CREATED");
 });
 
 app.get("/tweets", (req, res) => {
